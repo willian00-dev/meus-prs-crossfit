@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus PRs - CrossFit</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>SEU NOME</h1>
+            <p class="subtitle">Personal Records | CrossFit</p>
+        </div>
+        <button id="theme-toggle" aria-label="Alternar tema">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <section class="pr-table-container">
+            <table id="pr-table">
+                <thead>
+                    <tr>
+                        <th>Movimento</th>
+                        <th>Peso/Resultado</th>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody id="pr-table-body">
+                    <!-- Dados serão carregados via JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Atualizado em <span id="update-date"></span></p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

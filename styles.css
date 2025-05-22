@@ -1,0 +1,135 @@
+:root {
+    --primary: #e63946;
+    --secondary: #457b9d;
+    --dark: #1d3557;
+    --light: #f1faee;
+    --background: #ffffff;
+    --text: #333333;
+    --table-header: #f8f9fa;
+    --table-border: #e0e0e0;
+}
+
+[data-theme="dark"] {
+    --background: #1a1a2e;
+    --text: #f1faee;
+    --table-header: #16213e;
+    --table-border: #2a3a5a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s, color 0.3s;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+header {
+    background: var(--dark);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    opacity: 0.8;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pr-table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--table-border);
+}
+
+th {
+    background: var(--table-header);
+    font-weight: 600;
+}
+
+tr:hover {
+    background: rgba(69, 123, 157, 0.1);
+}
+
+.category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.category.lift {
+    background: rgba(69, 123, 157, 0.2);
+    color: var(--secondary);
+}
+
+.category.gymnastics {
+    background: rgba(230, 57, 70, 0.2);
+    color: var(--primary);
+}
+
+.category.metcon {
+    background: rgba(241, 250, 238, 0.2);
+    color: var(--text);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--dark);
+    color: white;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    th, td {
+        padding: 0.75rem;
+    }
+}
