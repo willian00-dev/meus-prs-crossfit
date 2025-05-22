@@ -1,52 +1,40 @@
-// CONFIGURAÇÃO (substitua com SEUS dados)
-const SHEET_ID = "1uV5RtK1qj6mOuynEPvlYCfPmz_6nj-7c3IRTQfQoCSg"; // ID REAL da planilha
-const SHEET_NAME = "tab1"; // Nome EXATO da aba
-const API_KEY = "AIzaSyBvln3Lk_pBqY7w_pJzXEv16I9BUOL-Kn8"; // Sua chave
+// Dados de exemplo (apenas para teste)
+const prs = [
+    { movement: "Back Squat", weight: "120 kg", date: "MAI/2023" },
+    { movement: "Deadlift", weight: "120 kg", date: "AGO/2023" },
+    { movement: "Front Squat", weight: "105 kg", date: "ABR/2024" },
+    { movement: "Hang Power Clean", weight: "75 kg", date: "JUL/2024" },
+    { movement: "Hang Power Snatch", weight: "77 kg", date: "MAI/2023" },
+    { movement: "Hang Squat Clean", weight: "75 kg", date: "MAI/2024" },
+    { movement: "Power Snatch", weight: "55 kg", date: "MAI/2023" },
+    { movement: "Shoulder Press", weight: "55 kg", date: "MAI/2023" },
+    { movement: "Snatch Balance", weight: "32 kg", date: "AGO/2023" },
+    { movement: "Squat Clean", weight: "80 kg", date: "JUL/2024" },
+    { movement: "Thruster", weight: "65 kg", date: "MAI/2023" },
+];
 
-// URL formatada corretamente
-const URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${encodeURIComponent(SHEET_NAME)}?key=${API_KEY}`;
+function loadPRs() {
+    const prTableBody = document.getElementById("pr-table-body");
+    prTableBody.innerHTML = "";
 
-async function loadPRsFromSheet() {
-  const prTableBody = document.getElementById("pr-table-body");
-  
-  try {
-    const response = await fetch(URL);
-    
-    if (!response.ok) {
-      throw new Error(`Erro HTTP: ${response.status}`);
-    }
-
-    const data = await response.json();
-    
-    // Verifica se existem dados
-    if (!data.values || data.values.length === 0) {
-      throw new Error("Planilha vazia ou formato inválido");
-    }
-
-    // Limpa e preenche a tabela
-    prTableBody.innerHTML = data.values.map(row => `
-      <tr>
-        <td>${row[0] || '-'}</td>
-        <td>${row[1] || '-'}</td>
-        <td>${row[2] || '-'}</td>
-        <td><span class="category ${row[3] || ''}">${row[3] || '-'}</span></td>
-      </tr>
-    `).join('');
-
-  } catch (error) {
-    console.error("Erro detalhado:", error);
-    prTableBody.innerHTML = `
-      <tr>
-        <td colspan="4" class="error">
-          ❌ Erro ao carregar dados. Verifique:<br>
-          1. ID da planilha e nome da aba<br>
-          2. Chave de API ativada<br>
-          3. Console (F12) para detalhes
-        </td>
-      </tr>
-    `;
-  }
+    prs.forEach(pr => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${pr.movement}</td>
+            <td>${pr.weight}</td>
+            <td>${pr.date}</td>
+        `;
+        prTableBody.appendChild(row);
+    });
 }
 
-// Carrega os dados quando a página abre
-window.addEventListener('DOMContentLoaded', loadPRsFromSheet);
+// Carrega os dados ao abrir a página
+loadPRs();
+
+// Modo escuro (opcional)
+document.getElementById("theme-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+
+// Data de atualização
+document.getElementById("update-date").textContent = new Date().toLocaleDateString("pt-BR");
