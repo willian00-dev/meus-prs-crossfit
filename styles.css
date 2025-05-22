@@ -9,19 +9,11 @@
     --table-border: #e0e0e0;
 }
 
-[data-theme="dark"] {
-    --background: #1a1a2e;
-    --text: #f1faee;
-    --table-header: #16213e;
-    --table-border: #2a3a5a;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s, color 0.3s;
 }
 
 body {
